@@ -20,4 +20,5 @@
 - [Listeners and Event Handlers](Pages/ListenersEventHandlers.md)
 - [Singletons](Pages/Singleton.md)
 - [Procedural Programming](Pages/ProceduralProgramming.md)
-- []()
+- [Functional Programming](Pages/FunctionalProgramming.md)
+- [Multithreading](Pages/Multithreading.md)
