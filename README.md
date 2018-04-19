@@ -2,4 +2,4 @@
 ### By: Connor Rowland and Logan Harrison
 
 ## Sections
-[Language Purpose/Genesis](Pages/LanguagePurpose.md)
+- [Language Purpose/Genesis](Pages/LanguagePurpose.md)
