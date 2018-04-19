@@ -54,10 +54,33 @@ if let myValue = myOptional {
 }
 // prints "HELLO"
 ```
-By using optional chaining (the first example), the unwrapping of `myOptional` can happen in the same line that we call `uppercased()` on it. We must use the `if let` syntax for `result` because if `myOptional` contained nil, nothing would be returned into `result`, so the following block should not execute. 
+By using optional chaining (the first example), the unwrapping of `myOptional` can happen in the same line that we call `uppercased()` on it. We must use the `if let` syntax for `result` because if `myOptional` contained nil, nothing would be returned into `result`, so the following block should not execute.
 
+### Assignments Return no value
+In popular languages like C and Java, the statement `x = 5` returns a value. However, in Swift, assignments do not return a value. By doing so, or by not doing so rather, Swift stops common bugs dealing with assignments. For instance, a common mistake in programming is the following.
 
+```Java
+int x = 5;
+if (x = 4){
+  System.out.println("x is equal to 4");
+}
+// prints "x is equal to 4"
+```
+Even though it is obvious that this is not true, because of the bug with `x = 4` instead of `x == 4`, the program says that 5 is equal to 4. This is because the assignment of `x = 4` returns `true`, which causes the `if` statement to execute. Let's see what happens in Swift.
+```Swift
+var x = 5
+if (x = 4){
+  print("x is equal to 4")
+}
+// Error: Use of '=' in a boolean context, did you mean '=='?
+```
+Swift has prevented this bug from occurring.
 
+### Other Unique Features
+- Statements do not need to end in semi-colons
+- Uses inferred types
+- Functions are first-class members
+- Strings fully support unicode (including identifiers)
 
 ## Kotlin
 [Back to Home](../README.md)
