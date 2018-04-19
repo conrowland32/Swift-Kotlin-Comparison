@@ -1,4 +1,4 @@
-# Singleton Pattern
+# Singletons
 ## Swift
 
 ## Kotlin
