@@ -11,8 +11,8 @@ var myOptional: String? = "hello"
 var myOtherOptional: String?
 ```
 
-Now, let's look at the different ways to unwrap optionals.
-##### Optional Binding
+#### Unwrapping Optionals
+##### Using If Statement
 
 ```Swift
 if let myValue = myOptional {
@@ -29,6 +29,17 @@ if let myValue = myOtherOptional {
 // prints nothing
 ```
 Because `myOtherOptional` contains no value, nil, the `if` statement does not execute, nothing is assigned to `myValue`, and the program continues.
+
+##### Force Unwrapping
+```Swift
+print(myOptional!)
+// prints "hello"
+
+print (myOtherOptional!)
+// produces an error
+```
+By force unwrapping(`!`), the developer is saying, "though this is an optional, I *know* it is not nil." If the optional has a value, everything works as expected; however, if the optional does not have a value an error is produced. Force unwrapping is rarely a good idea because it defeats the purpose of using optionals.
+
 
 
 
