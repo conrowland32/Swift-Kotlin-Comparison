@@ -1,4 +1,4 @@
-# Instance Reference in Data Type
+# Instance Self-Reference
 ## Swift
 
 ## Kotlin
