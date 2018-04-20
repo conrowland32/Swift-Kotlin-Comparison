@@ -34,7 +34,7 @@ Because `myOtherOptional` contains no value, nil, the `if` statement does not ex
 print(myOptional!)
 // prints "hello"
 
-print (myOtherOptional!)
+print(myOtherOptional!)
 // produces an error
 ```
 By force unwrapping(`!`), the developer is saying, "though this is an optional, I *know* it is not nil." If the optional has a value, everything works as expected; however, if the optional does not have a value an error is produced. Force unwrapping is rarely a good idea because it defeats the purpose of using optionals.
@@ -76,11 +76,90 @@ if (x = 4){
 ```
 Swift has prevented this bug from occurring.
 
+### Range Operator
+Swift has gotten rid of C-style for loops (`(for int i=0; i<n; i++)`) and instead has replaced them with a range operator. Ranges can be assigned to a variable, or explicitly written where needed. Let's look at a couple different types of ranges.
+#### Closed Range
+```Swift
+for i in 0...5 {
+  print(i)
+}
+// prints 0 1 2 3 4 5
+```
+#### Half-Open Range
+```Swift
+for i in 0..<5 {
+  print(i)
+}
+// prints 0 1 2 3 4
+```
+#### One-Sided Range
+```Swift
+let range = 0...
+
+range.contains(1) // true
+range.contains(0) // true
+range.contains(-1) // false
+
+for i in range {
+  print(i)
+}
+// prints 0 1 2 3 4 5 6 7 ... for as long as the program runs
+```
+One-sided ranges can also have an upper bound instead of a lower bound.
+```Swift
+let range = ...0
+
+range.contains(1) // false
+range.contains(0) // true
+range.contains(-1) // true
+
+for i in range {
+  print(i)
+}
+// Error: range does not conform to protocol "Sequence"
+```
+One-sided ranges can also be open at the top (but not the bottom) bound.
+```Swift
+let range = ..<0
+
+range.contains(1) // false
+range.contains(0) // false
+range.contains(-1) // true
+
+for i in range {
+  print(i)
+}
+// Error: range does not conform to protocol "Sequence"
+```
+#### Iterating Over Arrays Using Ranges
+In Swift, it is possible to iterate over arrays using ranges.
+```Swift
+let array = [0, 1, 2, 3, 4, 5, 6]
+
+var range = 2...4
+print(array[range])
+// prints [2, 3, 4]
+
+range = 2...
+print(array[range])
+// prints [2, 3, 4, 5, 6]
+
+range = ...5
+print(array[range])
+// prints [0, 1, 2, 3, 4, 5]
+
+range = 1..<6
+for element in array[range] {
+  print(element)
+}
+// prints 1 2 3 4 5
+```
+
 ### Other Unique Features
 - Statements do not need to end in semi-colons
 - Uses inferred types
 - Functions are first-class members
-- Strings fully support unicode (including identifiers)
+- Strings, even identifiers fully support unicode (yes, that means emojis too)
 
 ## Kotlin
 [Back to Home](../README.md)
