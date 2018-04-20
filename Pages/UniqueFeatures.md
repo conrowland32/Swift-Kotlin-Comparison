@@ -77,7 +77,7 @@ if (x = 4){
 Swift has prevented this bug from occurring.
 
 ### Range Operator
-Swift has gotten rid of C-style for loops (`(for int i=0; i<n; i++)`) and instead has replaced them with a range operator. Ranges can be assigned to a variable, or explicitly written where needed. Let's look at a couple different types of ranges.
+Swift has gotten rid of C-style for loops (`for (int i=0; i<n; i++)`) and instead has replaced them with a range operator. Ranges can be assigned to a variable, or explicitly written where needed. Let's look at a couple different types of ranges.
 #### Closed Range
 ```Swift
 for i in 0...5 {
