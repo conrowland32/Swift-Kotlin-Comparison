@@ -6,9 +6,7 @@
 
 ## Kotlin
 
-### Nullable Types
-
-#### Creating Nullables
+### Creating Nullables
 
 Like many new languages, Kotlin introduces a way to reduce the possibility of null references in code. Kotlin does this through _nullable_ types. In Kotlin, the type system distinguishes between references that are allowed to hold `null` (nullable references) and those that can not.
 
@@ -38,11 +36,11 @@ However, if we want to access the same field or method on `b`, which _is_ nullab
 val l = b.length   //compile error: 'b' can be null
 ```
 
-#### Accessing Nullables
+### Accessing Nullables
 
 Even though some variables are defined as nullable, we still want to access fields and properties on those variables. In order to do this, we must first check that a nullable type is not currently holding a null reference.
 
-##### Option 1: Explicit Checks
+#### Option 1: Explicit Checks
 
 The first way to do this is to explicitly check that the variable is not null:
 
@@ -56,7 +54,7 @@ if (b != null) {
 
 Once you check that the variable is not null, the compiler will track the check and allow you to access the variable. Explicitly checking for `null` using this method is good for simple applications, but can become tedious in larger applications because the check must be performed every time the variable could have changed.
 
-##### Option 2: Safe Calls
+#### Option 2: Safe Calls
 
 The second way to access a nullable is through the _safe call_ operator, `?.`:
 
@@ -91,7 +89,7 @@ fun foo(node: Node): String? {
 }
 ```
 
-##### Option 3: Not-null Assertion
+#### Option 3: Not-null Assertion
 
 The third option, the not-null assertion operator `!!` allows you to explicitly access a nullable. If the variable is `null`, the operation will throw a null pointer exception:
 

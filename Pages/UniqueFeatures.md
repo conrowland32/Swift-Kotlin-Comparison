@@ -201,21 +201,46 @@ for element in array[range] {
 
 Like many new languages, Kotlin introduces a way to reduce the possibility of null references in code. Kotlin does this through _nullable_ types. In Kotlin, the type system distinguishes between references that are allowed to hold `null` (nullable references) and those that can not. Nullable types must be checked for `null` before they can be accessed.
 
+Creating and accessing nullable types are covered in the [null and nullable types section](./Null.md).
+
 ### First-Class Functions
 
 Although Kotlin is an Object-Oriented language, it includes functions as first-class members. This means that functions can be declared at top level in a file, and are not required to be held in a class. This also allows functions to be assigned to a function type, and also to be passed as parameters to other function. This is an important improvement over most OO languages, as first-class functions are much easier to work with and provide more choice and ability to programmers. They also help to reduce code complexity. In Kotlin, functions can be created inline, or used as a lambda function.
+
+Function types, as well as lambdas and closures, are covered in the [functions section](./LambdaFunctionTypes.md).
 
 ### Extensions
 
 Kotlin provides the ability to extend a class without the use of inheritance or a design pattern like Decorator. This allows a simple way for developers to add new functionality to an existing class. Both functions and properties can be extended onto a class. Extensions do not modify the class they extend. Extensions also have scope, so they can be written to be made available only within one class or file, or written to be made available anywhere in a package.
 
+To declare an extension function, we can simply prefix its name with the type we want to extend. For example, to add a `swap` function to `MutableList<Int>`:
+
+```kotlin
+fun MutableList<Int>.swap(index1: Int, index2: Int) {
+    val tmp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+```
+
+Now, the `swap` function will be available as if it were a function created within the `MutableList<Int>` class. In a similar vein, we can also declare extension properties:
+
+```kotlin
+val <T> List<T>.lastIndex: Int
+    get() = size - 1
+```
+
 ### Type Checks and Smart Casts
 
 Kotlin can check the type of an object at runtime through the `is` operator. Since the compiler tracks `is`-checks in the background, explicit casting is not needed in most cases. The compiler automatically inserts safe casts when needed.
 
+Reflection is covered in some more depth in the [reflection section](./Reflection.md).
+
 ### Delegation
 
 Kotlin supports the delegation pattern natively. A class can implement an interface by delegating all of its public members to a specified object. Although delegation is design pattern that could could be implemented in any OO language, it is worth noting that Kotlin supports it natively, unlike most other languages.
+
+Two common types of delegates, _lazy_ delegates and _observable_ delegates, are covered in the [properties section](./Properties.md) and the [listeners and event handlers section](./ListenersEventHandlers.md), respectively.
 
 ### Operator Overloading
 
@@ -225,8 +250,12 @@ Kotlin allows developers to provide implementations for a predefined set of oper
 
 Coroutines in Kotlin simplify asynchronous programming (network IO, file IO, etc.) by moving the complicated asynchronous logic into libraries. This allows the logic of the program to be written in a simple, sequential way, and the underlying library handles the asynchrony in the background. This includes handling callbacks, subscriptions, and scheduled execution on different threads.
 
+Coroutines are covered in the [multithreading section](./Multithreading.md).
+
 ### Companion
 
 Kotlin, unlike most OO languages, does not allow static methods on classes. Instead, through the power of first-class functions, these static methods can simply be created as package-level functions. However, classes can also hold companion objects, which allow us to call its members with the typical syntax of static methods in other languages.
+
+Companion objects are covered in the [classes section](./Classes.md).
 
 [Back to Home](../README.md)
