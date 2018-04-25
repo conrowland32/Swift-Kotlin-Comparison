@@ -246,6 +246,17 @@ Two common types of delegates, _lazy_ delegates and _observable_ delegates, are 
 
 Kotlin allows developers to provide implementations for a predefined set of operations, and fix them to a symbolic representation like `+` or `*`. This allows us to create new implementations for equality, comparison, assignment, or other types of operators. This is useful for operations on complex types or objects.
 
+For example, say we wanted to overload the `-` operator to compute the negative of a `Point` type:
+
+```kotlin
+data class Point(val x: Int, val y: Int)
+
+operator fun Point.unaryMinus() = Point(-x, -y)
+
+val point = Point(10, 20)
+println(-point)   //prints "(-10, -20)"
+```
+
 ### Coroutines
 
 Coroutines in Kotlin simplify asynchronous programming (network IO, file IO, etc.) by moving the complicated asynchronous logic into libraries. This allows the logic of the program to be written in a simple, sequential way, and the underlying library handles the asynchrony in the background. This includes handling callbacks, subscriptions, and scheduled execution on different threads.
