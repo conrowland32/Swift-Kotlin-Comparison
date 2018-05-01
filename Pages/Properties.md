@@ -107,5 +107,39 @@ print("There are \(myFoo.hours) hours in \(myFoo.days) days.")
 // prints "There are 48 hours in 2 days."
 ```
 ### Lazy Keyword
+A lazy stored property is a property whose initial value is not calculated until the first time it is used. You indicate a lazy stored property by writing the `lazy` modifier before its declaration.
+```Swift
+class Foo {
+    lazy var date: Date = {
+        print("Creating a Date object...")
+        return Date()
+    }()
+}
+```
+Here, we define a lazy variable called date that is defined with a closure. This will not run until we try to do something that requires this variable to be created.
+```Swift
+var myFoo = Foo()
+// prints nothing
+
+print(myFoo.date)
+// prints "Creating a Date object..."
+// prints "2018-05-01 16:30:43 +0000"
+```
+This is useful for expensive operations or operations that require information that may be unknown at the time of instantiation. In this example, it is expensive to create a `Date` object, so by delaying that instantiation until it is needed, our program does not get bogged down creating the instance of `Foo`.
+
+In contrast, let's see the same example without the lazy keyword.
+```Swift
+class Foo {
+    var date: Date = {
+        print("Creating a Date object...")
+        return Date()
+    }()
+}
+
+var myFoo = Foo()
+// prints "Creating a Date object..."
+print(myFoo.date)
+// prints "2018-05-01 16:35:24 +0000"
+```
 ## Kotlin
 [Back to Home](../README.md)
