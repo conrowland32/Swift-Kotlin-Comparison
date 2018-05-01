@@ -53,4 +53,27 @@ class Bar1 : Foo() {
 }
 ```
 
+### Extension
+
+Kotlin provides the ability to extend a class without the use of inheritance or a design pattern like Decorator. This allows a simple way for developers to add new functionality to an existing class. Both functions and properties can be extended onto a class. Extensions do not modify the class they extend. Extensions also have scope, so they can be written to be made available only within one class or file, or written to be made available anywhere in a package.
+
+Extensions are covered in the [inheritance and extension section](./InheritanceExtension).
+
+To declare an extension function, we can simply prefix its name with the type we want to extend. For example, to add a `swap` function to `MutableList<Int>`:
+
+```kotlin
+fun MutableList<Int>.swap(index1: Int, index2: Int) {
+    val tmp = this[index1]
+    this[index1] = this[index2]
+    this[index2] = tmp
+}
+```
+
+Now, the `swap` function will be available as if it were a function created within the `MutableList<Int>` class. In a similar vein, we can also declare extension properties:
+
+```kotlin
+val <T> List<T>.lastIndex: Int
+    get() = size - 1
+```
+
 [Back to Home](../README.md)
