@@ -1,9 +1,18 @@
 # Multithreading
 
 ## Swift
+Unlike other OO languages, Swift tackles the threading problem without involving extending a class or following a protocol. Swift uses `DispatchQueue` as a main starting point for all threading activities. The easiest way to see this in action is to look at an example.
 
+```Swift
+DispatchQueue.global(qos: .background).async {
+    print("This is run on the background queue")
+
+    DispatchQueue.main.async {
+        print("This is run on the main queue, after the previous code in outer block")
+    }
+}
+```
 ---
-
 ## Kotlin
 
 Kotlin supports both coroutines and threading. Coroutines are not technically multithreading, as all the computation may still occur in a single thread, but they are worth mentioning since they provide a (simple) way of running non-blocking asynchronous code. Coroutines can also be used in combination with threads as a way to asynchronously assign new tasks to threads.
